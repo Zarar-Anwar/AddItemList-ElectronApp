@@ -4,6 +4,7 @@
   "description": "Here Add Item to list Electron Application",
   "main": "main.js",
   "scripts": {
+    "start":"electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "z.Zaala",
