@@ -1,4 +1,4 @@
-const {app,BrowserWindow}=require("electron")
+const {app,BrowserWindow,Menu,ipcMain}=require("electron")
 const path =require("path")
 
 
@@ -23,14 +23,13 @@ const createWin1=()=>{
 
 const createWin2=()=>{
     win2=new BrowserWindow({
-        height:600,
-        width:600,
+        height:300,
+        width:300,
         webPreferences:{
             preload:path.join(__dirname,"addPreload.js")
         }
     })
     win2.loadFile("add.html")
-
 }
 
 // Creating Menu
@@ -56,10 +55,16 @@ const win1Menu=[
     }
 ]
 
+const menu=Menu.buildFromTemplate(win1Menu)
+Menu.setApplicationMenu(menu)
 
+// main Event Handle
 
+ipcMain.on("send:text",(event,text)=>{
+win1.webContents.send("send:text",text)
+})
 // App Events Handler
 
-app.once("ready",()=>{
+app.whenReady().then(()=>{
     createWin1()
 })
