@@ -18,7 +18,7 @@ const createWin1=()=>{
             preload:path.join(__dirname,"preload.js")
         }
     })
-    
+    win1.loadFile("index.html")
 }
 
 const createWin2=()=>{
@@ -29,5 +29,37 @@ const createWin2=()=>{
             preload:path.join(__dirname,"addPreload.js")
         }
     })
+    win2.loadFile("add.html")
 
 }
+
+// Creating Menu
+
+const win1Menu=[
+    {
+        label:"File",
+        submenu:[
+            {
+                label:"Add Item",
+                click:()=>{
+                    createWin2()
+                }
+            },
+            {
+              label:"Clearing List"
+            },
+            {
+                label:"Quit",
+                role:"close"
+            }
+        ]
+    }
+]
+
+
+
+// App Events Handler
+
+app.once("ready",()=>{
+    createWin1()
+})
