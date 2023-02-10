@@ -40,12 +40,17 @@ const win1Menu=[
         submenu:[
             {
                 label:"Add Item",
+                accelato:"Ctrl+N",
                 click:()=>{
                     createWin2()
                 }
             },
             {
-              label:"Clearing List"
+              label:"Clearing List",
+              accerlerator:"Ctrl+D",
+              click:()=>{
+                win1.webContents.send("clear:text")
+              }
             },
             {
                 label:"Quit",
