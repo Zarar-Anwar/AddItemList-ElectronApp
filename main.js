@@ -40,20 +40,21 @@ const win1Menu=[
         submenu:[
             {
                 label:"Add Item",
-                accelato:"Ctrl+N",
+                accelerator:process.platform==="darwin"?"Command+N":"Ctrl+N",
                 click:()=>{
                     createWin2()
                 }
             },
             {
               label:"Clearing List",
-              accerlerator:"Ctrl+D",
+              accelerator:process.platform==="darwin"?"Command+D":"Ctrl+D",
               click:()=>{
                 win1.webContents.send("clear:text")
               }
             },
             {
                 label:"Quit",
+                accelerator:process.platform==="darwin"?"Command+Q":"Ctrl+Q",
                 role:"close"
             }
         ]
