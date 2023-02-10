@@ -61,6 +61,22 @@ const win1Menu=[
     }
 ]
 
+if(process.env.NODE_ENV!=="production")
+{
+    win1Menu.push({
+        label:"Debugging !!!",
+        submenu:[
+            {
+                label:"Toggle Dev Tools",
+                accelerator:process.platform==="darwin"?"Command+Shift+I":"Ctrl+Shift+I",
+                click:(item,windowSelected)=>{
+                   windowSelected.toggleDevTools()
+                }
+            }
+        ]
+    })
+}
+
 const menu=Menu.buildFromTemplate(win1Menu)
 Menu.setApplicationMenu(menu)
 
